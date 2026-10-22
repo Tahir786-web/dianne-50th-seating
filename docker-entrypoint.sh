@@ -9,4 +9,4 @@ chmod -R 777 /var/www/database
 php artisan migrate --force
 
 # Start the actual web server (adjust 'apache2-foreground' if you use php-fpm or Nginx)
-exec docker-php-entrypoint apache2-foreground
+exec php-fpm
