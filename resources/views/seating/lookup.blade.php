@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dianne's 50th • Find Your Seat</title>
+    <title>Dianne's Birthday Party • Find Your Seat</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -39,8 +39,8 @@
             <div class="col-11 col-md-6 col-lg-5">
                 <div class="card p-4 p-md-5">
                     <div class="text-center mb-4">
-                        <h2 class="fw-bold" style="color:#c45c26;">Dianne's 50th</h2>
-                        <p class="text-muted mb-1">Garden Dinner Party</p>
+                        <h2 class="fw-bold" style="color:#c45c26;">Dianne's Birthday Party</h2>
+                        <p class="text-muted mb-1">At: Your Address</p>
                         <h5 class="mt-3">Find Your Seat</h5>
                     </div>
 

@@ -88,7 +88,7 @@
 
                         <img src="{{ $flowerImage }}" alt="{{ $guest->table_name }}" class="flower-img">
 
-                        <div class="table-name">Table, {{ $guest->table_name }}</div>
+                        <div class="table-name">Table: {{ $guest->table_name }}</div>
                         <div class="seat-info">Seat #{{ $guest->seat_number }}</div>
                     </div>
 

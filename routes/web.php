@@ -44,12 +44,13 @@ Route::middleware(['auth'])->group(function () {
     )->name('comments.destroy');
 
 
+    
+
+});
     Route::get('/', fn () => redirect()->route('tables.index'));
     Route::resource('tables', TableController::class);
     Route::get('/', [SeatingController::class, 'index'])->name('seating.lookup');
     Route::post('/search', [SeatingController::class, 'search'])->name('seating.search');
-
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
