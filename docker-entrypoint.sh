@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Fix mapping registry issues inside the Docker layout
+composer dump-autoload --optimize
+
 # Ensure the database directory and file exist inside the container
 mkdir -p /var/www/database
 touch /var/www/database/database.sqlite
