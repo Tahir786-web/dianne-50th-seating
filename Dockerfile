@@ -1,42 +1,19 @@
-FROM php:8.3-cli
+# 1. Install Node.js and NPM inside the container
+RUN curl -sL https://nodesource.com | bash - && \
+    apt-get install -y nodejs
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    libpq-dev
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd
-
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Set working directory
+# 2. Set the working directory
 WORKDIR /var/www
 
-# Copy existing application
+# 3. Copy package files and install front-end dependencies
+COPY package*.json ./
+RUN npm install
+
+# 4. Copy the rest of your application code
 COPY . .
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+# 5. Compile CSS and JS assets using Vite
+RUN npm run build
 
-# Generate app key if not set (optional)
-# RUN php artisan key:generate
-
-# Expose port
-EXPOSE 8000
-
-# Start Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000
-
-
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-ENTRYPOINT ["docker-entrypoint.sh"]
+# Ensure correct permissions for the newly generated build folder
+RUN chown -R www-data:www-data /var/www/public/build
