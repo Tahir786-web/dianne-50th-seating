@@ -5,8 +5,8 @@ mkdir -p /var/www/database
 touch /var/www/database/database.sqlite
 chmod -R 777 /var/www/database
 
-# Run migrations automatically
-php artisan migrate --force
+# Wipe and re-run migrations to stop the "table already exists" error
+php artisan migrate:fresh --force
 
-# Start the actual web server (adjust 'apache2-foreground' if you use php-fpm or Nginx)
-exec php-fpm
+# Boot the application up (using laravel serve as a safe container fallback)
+exec php artisan serve --host=0.0.0.0 --port=80
